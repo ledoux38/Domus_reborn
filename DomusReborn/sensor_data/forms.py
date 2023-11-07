@@ -1,9 +1,9 @@
-from django.forms import forms
+from django import forms
 
-from DomusReborn.sensor_data.models import Sensor
+from .models import Sensor
 
 
 class SensorForm(forms.ModelForm):
     class Meta:
         model = Sensor
-        fields = ['name', 'sensor_type', 'localtion', 'is_active']
+        fields = ['name', 'sensor_type', 'location', 'last_reading', 'last_reading_time', 'is_active']

@@ -6,14 +6,12 @@ class Sensor(models.Model):
     SENSOR_TYPES = (('TEMP', 'Temperature'),
                     ('HUM', 'Humidity'),
                     ('LIGHT', 'Light'))
-
-
-name = models.CharField(max_length=255, unique=True)
-sensor_type = models.CharField(max_length=5, choices=Sensor.SENSOR_TYPES)
-location = models.CharField(max_length=255, null=True, blank=True)
-last_reading = models.FloatField(null=True, blank=True)
-last_reading_time = models.DateTimeField(null=True, blank=True)
-is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=255, unique=True)
+    sensor_type = models.CharField(max_length=5, choices=SENSOR_TYPES)
+    location = models.CharField(max_length=255, null=True, blank=True)
+    last_reading = models.FloatField(null=True, blank=True)
+    last_reading_time = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
 
 def __str__(self):
