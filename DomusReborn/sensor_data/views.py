@@ -37,3 +37,8 @@ def delete_sensor(request, sensor_id):
     sensor = get_object_or_404(Sensor, pk=sensor_id)
     sensor.delete()
     return HttpResponseRedirect('/sensors/')
+
+
+def sensors_list(request):
+    sensors = Sensor.objects.all()  # Récupère tous les objets Sensor de la base de données
+    return render(request, 'sensor_data/sensors_list.html', {'sensors': sensors})

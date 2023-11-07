@@ -1,0 +1,21 @@
+<!-- sensor_data/templates/sensor_data/sensors_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Capteurs</title>
+</head>
+<body>
+    <h1>Liste des Capteurs</h1>
+    <ul>
+        {% for sensor in sensors %}
+            <li>
+                {{ sensor.name }} - {{ sensor.sensor_type }}
+                <!-- Ajoutez plus de détails sur le capteur ici si nécessaire -->
+            </li>
+        {% empty %}
+            <li>Aucun capteur trouvé.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
