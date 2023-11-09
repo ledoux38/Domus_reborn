@@ -1,0 +1,22 @@
+.sensor-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sensor-item {
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+}
+
+.sensor-item img {
+    width: 50px; /* Ajustez selon la taille souhaitée */
+    height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .sensor-item {
+        width: 100%;
+    }
+}

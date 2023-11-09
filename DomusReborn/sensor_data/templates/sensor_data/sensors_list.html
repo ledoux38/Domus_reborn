@@ -1,21 +1,24 @@
-<!-- sensor_data/templates/sensor_data/sensors_list.html -->
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Liste des Capteurs</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
-    <h1>Liste des Capteurs</h1>
-    <ul>
+    <div class="sensor-container">
         {% for sensor in sensors %}
-            <li>
-                {{ sensor.name }} - {{ sensor.sensor_type }}
-                <!-- Ajoutez plus de détails sur le capteur ici si nécessaire -->
-            </li>
-        {% empty %}
-            <li>Aucun capteur trouvé.</li>
+            <div class="sensor-item" onclick="toggleDetails(this)">
+                <img src="{% static 'images/temperature.png' %}" alt="Sensor Icon">
+                <div class="sensor-details" style="display: none;">
+                    <p>Nom: {{ sensor.name }}</p>
+                    <p>Type: {{ sensor.sensor_type }}</p>
+                    <p>Emplacement: {{ sensor.location }}</p>
+                    <p>Actif: {{ sensor.is_active }}</p>
+                    <!-- Ajoutez d'autres détails si nécessaire -->
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
