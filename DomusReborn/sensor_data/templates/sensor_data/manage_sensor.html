@@ -6,6 +6,8 @@
             {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'sensor_data/css/manage_sensor.css' %}">
         <script src="{% static 'sensor_data/js/manage_sensor.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/librarie.css' %}">
+        <script src="{% static 'js/librarie.js' %}"></script>
         <title>Détails du Capteur</title>
     </head>
     <body>
@@ -28,7 +30,7 @@
                         </div>
                         <!-- Ajoutez plus de champs selon les besoins -->
                         <div>
-                            <button type="submit">Mettre à jour</button>
+                            <button class="neon-button neon-text" type="submit">Mettre à jour</button>
                         </div>
                     </form>
             </div>

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.neon-text {
+    color: #f40;
+    text-shadow: 0 0 5px #f40, 0 0 10px #f40, 0 0 20px #f40, 0 0 40px #f0f, 0 0 80px #f0f, 0 0 90px #f0f, 0 0 100px #f0f, 0 0 150px #f0f;
+}
+
+.neon-button {
+    border: 1px solid #f40;
+    box-shadow: 0 0 5px #f40, 0 0 15px #f40, 0 0 30px #f40, 0 0 60px #f40;
+    transition: all 0.3s ease-in-out;
+}
+.neon-button:hover {
+    box-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ff0, 0 0 80px #ff0;
+}
+
+body {
+    background: #111;
+    background: linear-gradient(to right, #0f0f0f, #222);
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0;
+    }
+}
+.flicker {
+    animation: neon-flicker 1.5s infinite;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    background-color: #222;
+    border: 1px solid #f40;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px #f40, 0 0 10px #f40, 0 0 15px #f40;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    color: #f40;
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+    color: #555;
+    opacity: 1;
+}
+
+
+
+
+
+label {
+    color: #0f0; /* Couleur néon, comme le vert fluo */
+    font-size: 1.2em; /* Taille de la police légèrement plus grande */
+    margin-bottom: 5px;
+    display: block; /* Assurez que le label est sur sa propre ligne */
+    animation: neon-flicker-label 3s infinite;
+    margin-bottom: 10px;
+    display: block;
+}
+
