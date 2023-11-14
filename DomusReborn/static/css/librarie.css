@@ -18,6 +18,26 @@ body {
     box-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ff0, 0 0 80px #ff0;
 }
 
+.btn {
+    background-color: #00ff00; /* Couleur verte vive */
+    color: #000; /* Texte en noir pour un bon contraste */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Espacement intérieur pour rendre le bouton plus grand */
+    text-transform: uppercase; /* Texte en majuscules pour plus d'impact */
+    font-weight: bold; /* Texte en gras */
+    border-radius: 5px; /* Coins légèrement arrondis */
+    cursor: pointer; /* Curseur en forme de main pour indiquer qu'il s'agit d'un bouton */
+    transition: background-color 0.3s, transform 0.3s; /* Animation de transition */
+    min-width: 120px; /* Largeur minimale pour une meilleure accessibilité */
+    font-size: 16px; /* Taille de police lisible */
+}
+
+.btn:hover {
+    background-color: #ff00ff; /* Changement de couleur au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille */
+}
+
+
 body {
     background: #111;
     background: linear-gradient(to right, #0f0f0f, #222);
@@ -42,6 +62,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
+    flex-grow: 1;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
@@ -67,12 +88,20 @@ input[type="text"]::placeholder, input[type="password"]::placeholder, input[type
 
 
 label {
+    flex-basis: 40%; /* Attribuer une largeur fixe, par exemple 40% de la div */
     color: #0f0; /* Couleur néon, comme le vert fluo */
     font-size: 1.2em; /* Taille de la police légèrement plus grande */
     margin-bottom: 5px;
-    display: block; /* Assurez que le label est sur sa propre ligne */
     animation: neon-flicker-label 3s infinite;
     margin-bottom: 10px;
-    display: block;
+    margin-bottom: 0;
+    text-align: right; /* Aligner le texte du label à droite */
+}
+
+.input-group {
+    display: flex;
+    align-items: center; /* Aligner verticalement les éléments */
+    justify-content: space-between; /* Place les éléments aux extrémités opposées */
+    gap: 10px; /* Espace entre le label et l'input */
 }
 
