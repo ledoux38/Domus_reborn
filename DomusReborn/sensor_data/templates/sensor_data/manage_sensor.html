@@ -11,28 +11,32 @@
         <title>Détails du Capteur</title>
     </head>
     <body>
-        <div class="sensor-container">
+        <div class="sensor-container frame">
             <img src="{% static 'sensor_data/images/capteur_temperature.png' %}" alt="Capteur" class="sensor-image">
             <div class="sensor-details">
-                    <form>
-                        <!-- Champs éditables du capteur -->
-                        <div class="input-group">
-                            <label for="sensorName">Nom du Capteur:</label>
-                            <input type="text" id="sensorName" name="sensorName" placeholder="Nom du Capteur">
-                        </div>
-                        <div class="input-group">
-                            <label for="sensorType">Type de Capteur:</label>
-                            <input type="text" id="sensorType" name="sensorType" placeholder="Type de Capteur">
-                        </div>
-                        <div class="input-group">
-                            <label for="sensorLocation">Emplacement:</label>
-                            <input type="text" id="sensorLocation" name="sensorLocation" placeholder="Emplacement">
-                        </div>
-                        <!-- Ajoutez plus de champs selon les besoins -->
-                        <div>
-                            <button class="btn" type="submit">Mettre à jour</button>
-                        </div>
-                    </form>
+                <form method="post" class="sensor-form">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label for="sensorName">Nom du Capteur:</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorType">Type de Capteur:</label>
+                        {{ form.sensor_type }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorLocation">Emplacement:</label>
+                        {{ form.location }}
+                    </div>
+                    <!-- Ajoutez plus de champs selon les besoins -->
+                    <div class="form-actions">
+                        {% if action == 'Add' %}
+                            <button class="btn" type="submit">Ajouter le capteur</button>
+                        {% else %}
+                            <button class="btn" type="submit">Mettre à jour le capteur</button>
+                        {% endif %}
+                    </div>
+                </form>
             </div>
         </div>
     </body>

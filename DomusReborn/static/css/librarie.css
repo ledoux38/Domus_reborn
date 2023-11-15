@@ -105,3 +105,64 @@ label {
     gap: 10px; /* Espace entre le label et l'input */
 }
 
+.frame {
+    border: 1px solid #00ff00; /* Bordure vive, par exemple verte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre portée pour un effet de profondeur */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espace intérieur pour le contenu */
+    background: #000; /* Fond sombre */
+    color: #fff; /* Texte en blanc */
+}
+
+.frame::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border: 1px solid #00ff00; /* Bordure vive */
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.2) 10px,
+        rgba(255, 255, 255, 0.2) 11px
+    ); /* Effet de grille */
+    z-index: -1;
+    border-radius: 10px; /* Coins arrondis */
+}
+
+.frame {
+    position: relative;
+    box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, 0 0 30px #0f0; /* Effet de néon vert */
+}
+
+.frame:hover {
+    box-shadow: 0 0 8px #ff0, 0 0 18px #ff0, 0 0 38px #ff0; /* Changement de couleur de l'ombre */
+    transform: translateY(-5px); /* Légère élévation */
+    transition: box-shadow 0.3s, transform 0.3s; /* Animation fluide */
+}
+
+
+.select-neon {
+    flex-grow: 1;
+    background-color: #222; /* Fond sombre */
+    border: 2px solid #f40; /* Bordure rouge néon */
+    color: #f40; /* Couleur de texte rouge néon */
+    padding: 10px; /* Espacement intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px; /* Taille de police adéquate */
+    appearance: none; /* Supprimer l'apparence par défaut */
+    -webkit-appearance: none; /* Supprimer l'apparence par défaut pour Safari */
+    -moz-appearance: none; /* Supprimer l'apparence par défaut pour Firefox */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: box-shadow 0.3s ease-in-out; /* Animation de transition */
+}
+
+.select-neon:focus {
+    outline: none; /* Supprimer le contour par défaut lors de la sélection */
+    box-shadow: 0 0 5px #f40, 0 0 10px #f40, 0 0 15px #f40;
+}
+
+.select-neon option {
+    background-color: #000; /* Fond noir pour les options */
+    color: #fff; /* Texte en blanc pour les options */
+}
