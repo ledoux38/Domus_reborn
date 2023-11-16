@@ -137,7 +137,7 @@ label {
 
 .frame:hover {
     box-shadow: 0 0 8px #ff0, 0 0 18px #ff0, 0 0 38px #ff0; /* Changement de couleur de l'ombre */
-    transform: translateY(-5px); /* Légère élévation */
+    /*transform: translateY(-5px);*/ /* Légère élévation */
     transition: box-shadow 0.3s, transform 0.3s; /* Animation fluide */
 }
 
@@ -165,4 +165,27 @@ label {
 .select-neon option {
     background-color: #000; /* Fond noir pour les options */
     color: #fff; /* Texte en blanc pour les options */
+}
+
+
+@media (max-width: 600px) {
+    .sensor-header img {
+        width: 80%; /* ajustez selon vos besoins */
+        margin-bottom: 20px;
+    }
+
+    .title-details {
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        align-items: normal;
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
