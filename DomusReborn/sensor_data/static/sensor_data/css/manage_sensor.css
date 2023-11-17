@@ -1,14 +1,16 @@
+/* Styles Généraux */
 .title-details {
     text-align: end;
 }
 
+/* Styles du Conteneur Principal */
 .sensor-container {
     display: flex;
     border: 1px solid black;
     padding: 10px;
 }
 
-
+/* Styles de l'Image du Capteur */
 .sensor-image {
     max-width: 164px;
     max-height: 164px;
@@ -17,56 +19,36 @@
     flex: 1;
 }
 
+/* Styles des Détails du Capteur */
 .sensor-details {
     flex: 2;
     margin-left: 20px;
 }
 
+/* Media Queries */
+
+/* Pour les écrans jusqu'à 768px */
+@media screen and (max-width: 768px) {
+    .sensor-container {
+        flex-direction: column;
+    }
+
+    .sensor-image, .sensor-details {
+        width: 100%;
+        max-width: none;
+        max-height: none;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+/* Pour les écrans jusqu'à 600px */
 @media screen and (max-width: 600px) {
     .sensor-image, .sensor-details {
         flex-basis: 100%;
         margin-right: 0;
     }
-}
 
-@media screen and (max-width: 768px) {
-    .sensor-container {
-        flex-direction: column;
-    }
-
-    .sensor-image {
-        width: 100%;
-        max-width: none;
-        max-height: none;
-    }
-
-    .sensor-details {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-}
-
-
-@media screen and (max-width: 768px) {
-    .sensor-container {
-        flex-direction: column;
-    }
-
-    .sensor-image {
-        width: 100%;
-        max-width: none;
-        max-height: none;
-    }
-
-    .sensor-details {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-}
-
-
-/* Media query pour les petits écrans */
-@media (max-width: 600px) {
     .sensor-header img {
         width: 50%; /* Ajustez la taille de l'icône selon vos besoins */
         max-width: 100px; /* Ajustez la taille maximale de l'icône */
