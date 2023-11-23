@@ -55,7 +55,7 @@ body {
     animation: neon-flicker 1.5s infinite;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="number"]  {
     background-color: #222;
     border: 1px solid #f40;
     color: #fff;
@@ -65,26 +65,50 @@ input[type="text"], input[type="password"], input[type="email"] {
     flex-grow: 1;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="number"]:focus {
     outline: none;
     box-shadow: 0 0 5px #f40, 0 0 10px #f40, 0 0 15px #f40;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
     transition: box-shadow 0.3s ease-in-out;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="number"]:focus {
     color: #f40;
 }
 
-input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder, input[type="number"]::placeholder {
     color: #555;
     opacity: 1;
 }
 
 
+@keyframes borderLight {
+    0%, 100% {
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7),
+                    inset 0 0 10px 2px rgba(255, 255, 255, 0.7);
+    }
+    25% {
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7) 100px 0,
+                    inset 0 0 10px 2px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7) 100px 100px,
+                    inset 0 0 10px 2px rgba(255, 255, 255, 0.7);
+    }
+    75% {
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7) 0 100px,
+                    inset 0 0 10px 2px rgba(255, 255, 255, 0.7);
+    }
+}
 
+.sensor-container {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+    animation: borderLight 2s linear infinite;
+}
 
 
 label {

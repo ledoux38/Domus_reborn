@@ -20,6 +20,19 @@
             {% csrf_token %}
             <h1 class="title-details">Détails du Capteur</h1>
             <div class="input-group">
+                <label for="sensorIp">Adresse IP:</label>
+                {{ form.ip_address }}
+            </div>
+            <div class="input-group">
+                <label for="sensorPort">Port:</label>
+                {{ form.port }}
+            </div>
+            <div class="input-group">
+                <label for="sensorKey">Clé d'enregistrement:</label>
+                {{ form.registration_key }}
+            </div>
+
+            <div class="input-group">
                 <label for="sensorName">Nom du Capteur:</label>
                 {{ form.name }}
             </div>
@@ -34,9 +47,12 @@
             <!-- Ajoutez plus de champs selon les besoins -->
             <div class="form-actions">
                 {% if action == 'Add' %}
+                <button class="btn primary" type="button">Ping</button>
                 <button class="btn primary" type="submit">Ajouter</button>
                 <button class="btn secondary" type="button">Annuler</button>
+
                 {% elif action == 'Edit' %}
+                <button class="btn primary" type="submit">Ping</button>
                 <button class="btn primary" type="submit">Enregistrer</button>
                 <button class="btn danger" type="button">Supprimer</button>
                 <button class="btn warning" type="button">Désactiver</button>

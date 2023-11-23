@@ -13,6 +13,10 @@ class Sensor(models.Model):
     last_reading_time = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    port = models.IntegerField(null=True, blank=True)
+    registration_key = models.CharField(max_length=255, null=True, blank=True)
+
 
 def __str__(self):
     return self.name
