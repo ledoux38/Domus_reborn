@@ -213,3 +213,28 @@ label {
         margin-top: 10px;
     }
 }
+
+/* Style pour l'arrière-plan obscurci */
+.modal-background {
+    display: none; /* caché par défaut */
+    position: fixed; /* Reste en place même lors du défilement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Noir avec opacité */
+    z-index: 1; /* S'affiche au-dessus du contenu de la page */
+}
+
+/* Style pour le bandeau modal */
+.notification-banner {
+    display: none; /* caché par défaut */
+    position: fixed;
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Ajustement pour le centrage parfait */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 2; /* Au-dessus de l'arrière-plan obscurci */
+}

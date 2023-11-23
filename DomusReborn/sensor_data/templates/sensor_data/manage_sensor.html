@@ -47,7 +47,8 @@
             <!-- Ajoutez plus de champs selon les besoins -->
             <div class="form-actions">
                 {% if action == 'Add' %}
-                <button class="btn primary" type="button">Ping</button>
+                <button id="ping" class="btn primary" type="button">Ping</button>
+
                 <button class="btn primary" type="submit">Ajouter</button>
                 <button class="btn secondary" type="button">Annuler</button>
 
@@ -62,5 +63,7 @@
         </form>
     </div>
 </div>
+<div id="modalBackground" class="modal-background"></div>
+
 </body>
 </html>
