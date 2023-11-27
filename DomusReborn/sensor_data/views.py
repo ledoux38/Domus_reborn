@@ -1,4 +1,6 @@
-from django.http import HttpResponseRedirect, JsonResponse
+import requests
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 
 from .forms import SensorForm
@@ -31,6 +33,22 @@ def delete_sensor(request, sensor_id):
     sensor = get_object_or_404(Sensor, pk=sensor_id)
     sensor.delete()
     return HttpResponseRedirect('/sensors/')
+
+
+def ping_sensor(request):
+    if request.method == 'POST':
+        sensor_ip = request.POST.get('sensorIp')
+        sensor_port = request.POST.get('sensorPort')
+
+        # Ici, remplacez cette logique par celle qui est appropriée pour votre ping
+        try:
+            response = requests.get(f"http://{sensor_ip}:{sensor_port}/ping")
+            if response.status_code == 200:
+                return JsonResponse({'success': True})
+            else:
+                return JsonResponse({'success': False})
+        except requests.ConnectionError:
+            return JsonResponse({'success': False})
 
 
 def sensors_list(request):

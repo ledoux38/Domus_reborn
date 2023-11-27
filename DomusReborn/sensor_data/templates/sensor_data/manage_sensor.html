@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'sensor_data/css/manage_sensor.css' %}">
-    <link rel="stylesheet" href="{% static 'css/librarie.css' %}">
-    <script src="{% static 'js/librarie.js' %}"></script>
-    <title>Détails du Capteur</title>
-</head>
-<body>
-<div class="sensor-container frame">
-    <div class="sensor-header">
-        <img src="{% static 'sensor_data/images/capteur_temperature.png' %}" alt="Capteur" class="sensor-image">
-    </div>
-    <div class="sensor-details">
-        <form method="post" class="sensor-form">
-            {% csrf_token %}
-            <h1 class="title-details">Détails du Capteur</h1>
-            <div class="input-group">
-                <label for="sensorIp">Adresse IP:</label>
-                {{ form.ip_address }}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'sensor_data/css/manage_sensor.css' %}">
+        <link rel="stylesheet" href="{% static 'css/librarie.css' %}">
+        <script src="{% static 'js/librarie.js' %}"></script>
+        <title>Détails du Capteur</title>
+    </head>
+    <body>
+        <div class="sensor-container frame">
+            <div class="sensor-header">
+                <img src="{% static 'sensor_data/images/capteur_temperature.png' %}" alt="Capteur" class="sensor-image">
             </div>
-            <div class="input-group">
-                <label for="sensorPort">Port:</label>
-                {{ form.port }}
-            </div>
-            <div class="input-group">
-                <label for="sensorKey">Clé d'enregistrement:</label>
-                {{ form.registration_key }}
-            </div>
+            <div class="sensor-details">
+                <form method="post" class="sensor-form">
+                    {% csrf_token %}
+                    <h1 class="title-details">Détails du Capteur</h1>
+                    <div class="input-group">
+                        <label for="sensorIp">Adresse IP:</label>
+                        {{ form.ip_address }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorPort">Port:</label>
+                        {{ form.port }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorKey">Clé d'enregistrement:</label>
+                        {{ form.registration_key }}
+                    </div>
 
-            <div class="input-group">
-                <label for="sensorName">Nom du Capteur:</label>
-                {{ form.name }}
-            </div>
-            <div class="input-group">
-                <label for="sensorType">Type de Capteur:</label>
-                {{ form.sensor_type }}
-            </div>
-            <div class="input-group">
-                <label for="sensorLocation">Emplacement:</label>
-                {{ form.location }}
-            </div>
-            <!-- Ajoutez plus de champs selon les besoins -->
-            <div class="form-actions">
-                {% if action == 'Add' %}
-                <button id="pingButton" class="btn primary" type="button">Ping</button>
+                    <div class="input-group">
+                        <label for="sensorName">Nom du Capteur:</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorType">Type de Capteur:</label>
+                        {{ form.sensor_type }}
+                    </div>
+                    <div class="input-group">
+                        <label for="sensorLocation">Emplacement:</label>
+                        {{ form.location }}
+                    </div>
+                    <!-- Ajoutez plus de champs selon les besoins -->
+                    <div class="form-actions">
+                        {% if action == 'Add' %}
+                        <button id="pingButton" class="btn primary" type="button">Ping</button>
 
-                <button class="btn primary" type="submit">Ajouter</button>
-                <button class="btn secondary" type="button">Annuler</button>
+                        <button class="btn primary" type="submit">Ajouter</button>
+                        <button class="btn secondary" type="button">Annuler</button>
 
-                {% elif action == 'Edit' %}
-                <button class="btn primary" type="submit">Ping</button>
-                <button class="btn primary" type="submit">Enregistrer</button>
-                <button class="btn danger" type="button">Supprimer</button>
-                <button class="btn warning" type="button">Désactiver</button>
-                <button class="btn secondary" type="button">Annuler</button>
-                {% endif %}
+                        {% elif action == 'Edit' %}
+                        <button class="btn primary" type="submit">Ping</button>
+                        <button class="btn primary" type="submit">Enregistrer</button>
+                        <button class="btn danger" type="button">Supprimer</button>
+                        <button class="btn warning" type="button">Désactiver</button>
+                        <button class="btn secondary" type="button">Annuler</button>
+                        {% endif %}
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-<div id="connectionModal" class="modal">
-    <div class="modal-content">
-        <h4 id="modalTitle">Connexion en cours...</h4>
-        <p id="modalMessage">Veuillez patienter pendant que nous établissons la connexion.</p>
-    </div>
-</div>
-<script src="{% static 'sensor_data/js/manage_sensor.js' %}"></script>
-</body>
+        </div>
+        <div id="connectionModal" class="modal">
+            <div class="modal-content">
+                <h4 id="modalTitle">Connexion en cours...</h4>
+                <p id="modalMessage">Veuillez patienter pendant que nous établissons la connexion.</p>
+            </div>
+        </div>
+        <script src="{% static 'sensor_data/js/manage_sensor.js' %}"></script>
+    </body>
 </html>
 
 
