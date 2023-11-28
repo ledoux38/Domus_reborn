@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import requests
 
 # Paramètres du capteur et du serveur
-SERVER_URL = 'http://localhost:8000/path_to_your_endpoint'
+SERVER_URL = 'http://localhost:8000/sensor_data/ping'
 SENSOR_ID = 'sensor123'
 REGISTRATION_KEY = 'your_registration_key'
 HOST_NAME = 'localhost'  # Adresse IP du capteur
