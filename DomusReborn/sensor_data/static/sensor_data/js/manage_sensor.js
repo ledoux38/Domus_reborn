@@ -1,4 +1,5 @@
-document.getElementById('pingButton').addEventListener('click', function() {
+// Gestionnaire d'événements pour le bouton Ping
+function handlePing() {
     const sensorIp = document.getElementById('sensorIp').value;
     const sensorPort = document.getElementById('sensorPort').value;
 
@@ -6,29 +7,40 @@ document.getElementById('pingButton').addEventListener('click', function() {
     updateModalStatus('pending');
     document.getElementById('connectionModal').style.display = 'block';
 
-    fetch('/path_to_ping_view', {
+    pingSensor(sensorIp, sensorPort)
+        .then(handlePingResponse)
+        .catch(() => {
+            updateModalStatus('failure');
+            setTimeout(closeModal, 3000); // Fermer la modal après 3 secondes en cas d'échec
+        });
+}
+
+
+// Envoi de la requête de ping
+function pingSensor(ip, port) {
+    return fetch('/sensor_data/ping', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken'), // Assurez-vous de gérer le CSRF token
+            'X-CSRFToken': getCookie('csrftoken'),
         },
-        body: JSON.stringify({ sensorIp: sensorIp, sensorPort: sensorPort })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            updateModalStatus('success');
-            setTimeout(function() {
-                document.getElementById('connectionModal').style.display = 'none';
-            }, 3000);
-        } else {
-            updateModalStatus('failure');
-        }
-    })
-    .catch(error => {
+        body: JSON.stringify({ sensorIp: ip, sensorPort: port })
+    }).then(response => response.json());
+}
+
+// Gestion de la réponse du ping
+function handlePingResponse(data) {
+    if (data.success) {
+        updateModalStatus('success');
+    } else {
         updateModalStatus('failure');
-    });
-});
+    }
+    setTimeout(closeModal, 3000); // Fermer la modal après 3 secondes, que ce soit un succès ou un échec
+}
+
+// Ajout de l'écouteur d'événements
+document.getElementById('pingButton').addEventListener('click', handlePing);
+
 
 function getCookie(name) {
     // Fonction pour récupérer le CSRF token
@@ -45,6 +57,14 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+// Fonction pour fermer la modal
+function closeModal() {
+    document.getElementById('connectionModal').style.display = 'none';
+}
+
+// Ajout de l'écouteur d'événements
+document.getElementById('pingButton').addEventListener('click', handlePing);
 
 
     function updateModalStatus(status) {
