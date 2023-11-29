@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('ping/', views.ping_sensor, name='ping_sensor'),
+    path('ping', views.ping_sensor, name='ping_sensor'),
     # path('receive-data/', views.ping_sensor, name='ping_sensor'),
     # path('ping/', views.receive_sensor_data, name='receive_sensor_data'),
     path('sensors-list/', views.sensors_list, name='sensors_list'),

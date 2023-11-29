@@ -1,3 +1,5 @@
+import json
+
 import requests
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
@@ -37,16 +39,19 @@ def delete_sensor(request, sensor_id):
 
 def ping_sensor(request):
     if request.method == 'POST':
-        sensor_ip = request.POST.get('sensorIp')
-        sensor_port = request.POST.get('sensorPort')
-
-        # Ici, remplacez cette logique par celle qui est appropriée pour votre ping
         try:
+            data = json.loads(request.body)  # Parse les données JSON du corps de la requête
+            sensor_ip = data.get('sensorIp')
+            sensor_port = data.get('sensorPort')
+
+            # Votre logique de ping
             response = requests.get(f"http://{sensor_ip}:{sensor_port}/ping")
             if response.status_code == 200:
                 return JsonResponse({'success': True})
             else:
                 return JsonResponse({'success': False})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
         except requests.ConnectionError:
             return JsonResponse({'success': False})
 
