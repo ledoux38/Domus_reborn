@@ -1,21 +1,24 @@
 from django.db import models
 
 
-# Create your models here.
+class SensorGroup(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    location = models.CharField(max_length=255, null=True, blank=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    port = models.IntegerField(null=True, blank=True)
+    registration_key = models.CharField(max_length=255, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+
+
 class Sensor(models.Model):
     SENSOR_TYPES = (('TEMP', 'Temperature'),
                     ('HUM', 'Humidity'),
                     ('LIGHT', 'Light'))
-    name = models.CharField(max_length=255, unique=True)
+    group = models.ForeignKey(SensorGroup, related_name='sensors', on_delete=models.CASCADE)
     sensor_type = models.CharField(max_length=5, choices=SENSOR_TYPES)
-    location = models.CharField(max_length=255, null=True, blank=True)
     last_reading = models.FloatField(null=True, blank=True)
     last_reading_time = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
-
-    ip_address = models.GenericIPAddressField(null=True, blank=True)
-    port = models.IntegerField(null=True, blank=True)
-    registration_key = models.CharField(max_length=255, null=True, blank=True)
 
 
 def __str__(self):
