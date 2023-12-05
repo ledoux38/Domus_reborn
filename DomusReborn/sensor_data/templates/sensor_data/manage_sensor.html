@@ -17,31 +17,22 @@
             <div class="sensor-details">
                 <form method="post" class="sensor-form">
                     {% csrf_token %}
-                    <h1 class="title-details">Détails du Capteur</h1>
+                    <h1 class="title-details">Composant</h1>
                     <div class="input-group">
-                        <label for="sensorIp">Adresse IP:</label>
+                        <label for="sensorGroupIp">Adresse IP:</label>
                         {{ form.ip_address }}
                     </div>
                     <div class="input-group">
-                        <label for="sensorPort">Port:</label>
+                        <label for="sensorGroupPort">Port:</label>
                         {{ form.port }}
                     </div>
                     <div class="input-group">
-                        <label for="sensorKey">Clé d'enregistrement:</label>
+                        <label for="sensorGroupKey">Clé d'enregistrement:</label>
                         {{ form.registration_key }}
                     </div>
-
                     <div class="input-group">
-                        <label for="sensorName">Nom du Capteur:</label>
+                        <label for="sensorGroupName">Nom du Capteur:</label>
                         {{ form.name }}
-                    </div>
-                    <div class="input-group">
-                        <label for="sensorType">Type de Capteur:</label>
-                        {{ form.sensor_type }}
-                    </div>
-                    <div class="input-group">
-                        <label for="sensorLocation">Emplacement:</label>
-                        {{ form.location }}
                     </div>
                     <!-- Ajoutez plus de champs selon les besoins -->
                     <div class="form-actions">

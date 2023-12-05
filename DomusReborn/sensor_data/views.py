@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 
-from .forms import SensorForm
+from .forms import SensorForm, SensorGroupForm
 from .models import Sensor
 
 
@@ -15,7 +15,7 @@ def receive_sensor_data(request):
 
 
 def add_sensor(request):
-    form = SensorForm(request.POST or None)
+    form = SensorGroupForm(request.POST or None)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/sensors/')

@@ -1,13 +1,13 @@
 // Gestionnaire d'événements pour le bouton Ping
 function handlePing() {
-    const sensorIp = document.getElementById('sensorIp').value;
-    const sensorPort = document.getElementById('sensorPort').value;
+    const sensorGroupIp = document.getElementById('sensorGroupIp').value;
+    const sensorGroupPort = document.getElementById('sensorGroupPort').value;
 
     // Afficher la modal avec l'état 'en cours'
     updateModalStatus('pending');
     document.getElementById('connectionModal').style.display = 'block';
 
-    pingSensor(sensorIp, sensorPort)
+    pingSensor(sensorGroupIp, sensorGroupPort)
         .then(handlePingResponse)
         .catch(() => {
             updateModalStatus('failure');
@@ -24,7 +24,7 @@ function pingSensor(ip, port) {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken'),
         },
-        body: JSON.stringify({ sensorIp: ip, sensorPort: port })
+        body: JSON.stringify({ sensorGroupIp: ip, sensorGroupPort: port })
     }).then(response => response.json());
 }
 
