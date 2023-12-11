@@ -41,11 +41,13 @@ def ping_sensor(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)  # Parse les données JSON du corps de la requête
-            sensor_ip = data.get('sensorIp')
-            sensor_port = data.get('sensorPort')
+            sensor_ip = data.get('sensorGroupIp')
+            sensor_port = data.get('sensorGroupPort')
+            registration_key = data.get('sensorGroupKey')  # Obtenez la clé d'enregistrement
 
             # Votre logique de ping
-            response = requests.get(f"http://{sensor_ip}:{sensor_port}/ping")
+            response = requests.post(f"http://{sensor_ip}:{sensor_port}/ping", json={'key': registration_key})
+
             if response.status_code == 200:
                 return JsonResponse({'success': True})
             else:
@@ -54,6 +56,8 @@ def ping_sensor(request):
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
         except requests.ConnectionError:
             return JsonResponse({'success': False})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
 def sensors_list(request):
