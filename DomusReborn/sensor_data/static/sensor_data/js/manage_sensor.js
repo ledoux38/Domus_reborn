@@ -2,12 +2,13 @@
 function handlePing() {
     const sensorGroupIp = document.getElementById('sensorGroupIp').value;
     const sensorGroupPort = document.getElementById('sensorGroupPort').value;
+    const sensorGroupKey = document.getElementById('sensorGroupKey').value;
 
     // Afficher la modal avec l'état 'en cours'
     updateModalStatus('pending');
     document.getElementById('connectionModal').style.display = 'block';
 
-    pingSensor(sensorGroupIp, sensorGroupPort)
+    pingSensor(sensorGroupIp, sensorGroupPort, sensorGroupKey)
         .then(handlePingResponse)
         .catch(() => {
             updateModalStatus('failure');
@@ -17,14 +18,14 @@ function handlePing() {
 
 
 // Envoi de la requête de ping
-function pingSensor(ip, port) {
+function pingSensor(ip, port, key) {
     return fetch('/sensor_data/ping', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken'),
         },
-        body: JSON.stringify({ sensorGroupIp: ip, sensorGroupPort: port })
+        body: JSON.stringify({ sensorGroupIp: ip, sensorGroupPort: port,  sensorGroupKey:key})
     }).then(response => response.json());
 }
 
